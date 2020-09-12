@@ -1,10 +1,13 @@
-
-form {
+.form {
     border: 10px solid #f1f1f1;
     padding: 10px;
-    background:gray;
+    background:#363636;
+    background-image:url('../../../assets/imagenes/backTron2adw.png');
 }
-
+label{
+    color: #61e6fd;
+    font-family: sans-serif;
+}
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -44,7 +47,7 @@ button:hover {
 }
 
 img.avatar {
-    width: 40%;
+    width: 80%;
     border-radius: 50%;
 }
 

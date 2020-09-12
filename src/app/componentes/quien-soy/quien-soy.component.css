@@ -1,16 +1,30 @@
+nav{
+    /* background-image:url('../../../assets/imagenes/backTron2adw.png');  */
+    background-color:#61e6fd;
+}
+h1{
+    font-family: sans-serif;
+}
+
 .imagenDeQuienSoy{
     width: 100%;
    
     }
 body {
-    font: 20px Montserrat, sans-serif;
+    /* font: sans-serif; */
     line-height: 1.8;
     color: #f5f6f7;
 }
 p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
+.margin {margin-bottom: 45px;
+    font: sans-serif;
+}
+h3 {
+    font: sans-serif;
+}
 .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-image:url('../../../assets/imagenes/backTron2adw.png');
+    /* background-color: #1abc9c; */
     color: #ffffff;
 }
 .bg-2 { 
@@ -26,6 +40,7 @@ p {font-size: 16px;}
     color: #fff;
 }
 .container-fluid {
+    font: sans-serif;
     padding-top: 70px;
     padding-bottom: 70px;
 }
