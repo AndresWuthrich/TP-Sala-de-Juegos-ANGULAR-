@@ -1,8 +1,13 @@
 
 form {
+    font-family: Impact;
     border: 10px solid #f1f1f1;
     padding: 10px;
     background:gray;
+}
+
+h1, h2{
+    font-family: Impact;
 }
 
 input[type=text], input[type=password] {

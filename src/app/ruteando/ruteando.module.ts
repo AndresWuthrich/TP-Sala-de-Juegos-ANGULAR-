@@ -24,6 +24,7 @@ import { JugadoresListadoComponent } from '../componentes/jugadores-listado/juga
 import { PptComponent } from '../componentes/ppt/ppt.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { TatetiComponent } from '../componentes/tateti/tateti.component';
+import { SimonComponent } from '../componentes/simon/simon.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
@@ -47,7 +48,8 @@ children:
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'PPT' , component: PptComponent},
       {path: 'Tateti' , component: TatetiComponent},
-      {path: 'Anagrama' , component: AnagramaComponent}]
+      {path: 'Anagrama' , component: AnagramaComponent},
+      {path: 'Simon' , component: SimonComponent}]
 },
 {path: '**' , component: ErrorComponent},
 {path: 'error' , component: ErrorComponent}];
