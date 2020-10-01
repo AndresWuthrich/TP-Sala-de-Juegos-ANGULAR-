@@ -16,7 +16,7 @@ export class RegistroComponent implements OnInit {
   pass:string;
   pass2:string;
   yaRegistrado:boolean;
-  conciden:boolean;
+  coinciden:boolean;
 
  /* constructor( private miConstructor:FormBuilder) { }
   email=new FormControl('',[Validators.email]);
@@ -27,7 +27,7 @@ export class RegistroComponent implements OnInit {
   constructor(private router: Router ) { 
     this.servicio=new LocalStorageService();
     this.yaRegistrado=true;
-    this.conciden=true;
+    this.coinciden=true;
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class RegistroComponent implements OnInit {
       this.router.navigate(['/']);
     }
     else{
-      this.conciden=false;
+      this.coinciden=false;
     }
   }  
 }
