@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { LocalStorageService } from '../../servicios/localStorage.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,15 +19,17 @@ export class LoginComponent implements OnInit {
   progresoMensaje="esperando..."; 
   logeando=true;
   ProgresoDeAncho:string;
-
+  servicio: LocalStorageService;
   clase="progress-bar progress-bar-info progress-bar-striped ";
+  existe:boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
-
+      this.servicio=new LocalStorageService();
+      this.existe=true;
   }
 
   ngOnInit() {
@@ -35,8 +39,15 @@ export class LoginComponent implements OnInit {
     if (this.usuario === 'admin' && this.clave === 'admin') {
       this.router.navigate(['/Principal']);
     }
+    else{
+      this.router.navigate(['/Juegos']);
+
+    }
   }
-  MoverBarraDeProgreso() {
+  MoverBarraDeProgreso(user:string, clave:string) {
+    if(this.servicio.iniciarJugador(user, clave))
+    {
+      this.existe=true;
     
     this.logeando=false;
     this.clase="progress-bar progress-bar-danger progress-bar-striped active";
@@ -72,9 +83,15 @@ export class LoginComponent implements OnInit {
           console.log("final");
           this.subscription.unsubscribe();
           this.Entrar();
+//          this.router.navigate(["/Juegos"]);
           break;
       }     
+      
+      this.servicio.iniciarJugador(user, clave);
     });
+  }else{
+this.existe=false;
+  }
     //this.logeando=true;
   }
 

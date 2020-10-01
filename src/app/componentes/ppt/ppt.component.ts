@@ -1,6 +1,6 @@
 import { Component, OnInit ,Input,Output,EventEmitter } from '@angular/core';
-import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
-// import { LocalStorageService } from '../../servicios/localStorage.service';
+import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera'
+import { LocalStorageService } from '../../servicios/localStorage.service';
 import { Jugador } from '../../clases/jugador';
 @Component({
   selector: 'app-ppt',
@@ -19,7 +19,7 @@ export class PptComponent implements OnInit {
   rutaDeFoto:string;  
   resultado:string;
   ganar: boolean;
-  // servicio: LocalStorageService;
+  servicio: LocalStorageService;
   jugadorLogueado: Jugador;
 
 
@@ -28,8 +28,8 @@ export class PptComponent implements OnInit {
     console.info("Piedra papel o tijera:");//,this.nuevoJuego);  
     this.ocultarVerificar=false;
 
-    // this.servicio=new LocalStorageService();
-    // this.jugadorLogueado=this.servicio.traerLogeado();    
+    this.servicio=new LocalStorageService();
+    this.jugadorLogueado=this.servicio.traerLogeado();    
    }
 
    jugar(humanoObjeto:string){
@@ -52,13 +52,13 @@ export class PptComponent implements OnInit {
     if( (typeof this.jugadorLogueado !== 'undefined') &&  (this.jugadorLogueado!== null))
     {
       this.nuevoJuego.gano= this.nuevoJuego.verificar();
-      // this.nuevoJuego.jugador=this.jugadorLogueado.mail;
+      this.nuevoJuego.jugador=this.jugadorLogueado.mail;
     }
     else{
       this.nuevoJuego.gano= this.nuevoJuego.verificar();
     }
 
-    // this.servicio.guardarJuego(this.nuevoJuego);
+    this.servicio.guardarJuego(this.nuevoJuego);
   }
     
   ngOnInit(): void {

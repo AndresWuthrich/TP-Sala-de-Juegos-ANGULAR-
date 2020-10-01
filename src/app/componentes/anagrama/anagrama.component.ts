@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input,Output,EventEmitter } from '@angular/core';
 import { JuegoAnagrama } from '../../clases/juego-anagrama'
-// import { LocalStorageService } from '../../servicios/localStorage.service';
+import { LocalStorageService } from '../../servicios/localStorage.service';
 import { Jugador } from '../../clases/jugador';
 
 @Component({
@@ -8,10 +8,10 @@ import { Jugador } from '../../clases/jugador';
   templateUrl: './anagrama.component.html',
   styleUrls: ['./anagrama.component.css']
 })
-export class AnagramaComponent implements OnInit {
 
-  // @Output() 
-  // enviarJuego: EventEmitter<any>= new EventEmitter<any>();
+export class AnagramaComponent implements OnInit {
+  @Output() 
+  enviarJuego: EventEmitter<any>= new EventEmitter<any>();
   nuevoJuego: JuegoAnagrama;
 
   listaPalabras:string[] = ['violeta', 'montaña', 'utensillo', 'escalera', 'guitarra', 'hola', 'control', 'universidad', 'astronauta'];
@@ -22,15 +22,15 @@ export class AnagramaComponent implements OnInit {
   empezoJuego:boolean;
   terminoJuego:boolean;
   imagen:string;
-  // servicio: LocalStorageService;
+  servicio: LocalStorageService;
   jugadorLogueado: Jugador;
 
   constructor() {
     this.nuevoJuego = new JuegoAnagrama();
     console.info("Anagrama:");//,this.nuevoJuego);  
     this.terminoJuego = false;
-    // this.servicio=new LocalStorageService();
-    // this.jugadorLogueado=this.servicio.traerLogeado();
+    this.servicio=new LocalStorageService();
+    this.jugadorLogueado=this.servicio.traerLogeado();
    }
 
   ngOnInit() {
@@ -86,13 +86,13 @@ export class AnagramaComponent implements OnInit {
     // this.perdedor=!this.ganador;
     // this.verTiempo=true;
 
-    // if( (typeof this.jugadorLogueado !== 'undefined') &&  (this.jugadorLogueado!== null))
-    // {
-    //   this.nuevoJuego.jugador=this.jugadorLogueado.mail;
-    // }
-    // this.nuevoJuego.gano= this.nuevoJuego.verificar();
+    if( (typeof this.jugadorLogueado !== 'undefined') &&  (this.jugadorLogueado!== null))
+    {
+      this.nuevoJuego.jugador=this.jugadorLogueado.mail;
+    }
+    this.nuevoJuego.gano= this.nuevoJuego.verificar();
 
-    // this.servicio.guardarJuego(this.nuevoJuego);
+    this.servicio.guardarJuego(this.nuevoJuego);
   }
 
   NuevoJuego() {

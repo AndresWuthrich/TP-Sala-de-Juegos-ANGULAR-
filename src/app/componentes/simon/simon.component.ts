@@ -2,7 +2,7 @@ import { Component, OnInit ,Input,Output,EventEmitter } from '@angular/core';
 import { JuegoSimon } from '../../clases/juego-simon'
 import { Event } from '@angular/router';
 import * as $ from 'jquery';
-//import { LocalStorageService } from '../../servicios/localStorage.service';
+import { LocalStorageService } from '../../servicios/localStorage.service';
 import { Jugador } from '../../clases/jugador';
 
 @Component({
@@ -19,7 +19,7 @@ export class SimonComponent implements OnInit {
   subnivel: number;
   resultado: string;
   terminoJuego:boolean;
-//  servicio: LocalStorageService;
+  servicio: LocalStorageService;
   jugadorLogueado: Jugador;
   ocultarVerificar: boolean;
   colours: Array<string> = ["green","red","yellow","blue"];
@@ -40,8 +40,8 @@ export class SimonComponent implements OnInit {
      console.info("Simon:");//,this.nuevoJuego);      
      this.terminoJuego = false;
 
-    //  this.servicio = new LocalStorageService();
-    //  this.jugadorLogueado=this.servicio.traerLogeado();  
+     this.servicio = new LocalStorageService();
+     this.jugadorLogueado=this.servicio.traerLogeado();  
     }
 
   ngOnInit(): void {
@@ -76,7 +76,7 @@ export class SimonComponent implements OnInit {
         }
         this.nuevoJuego.gano= this.nuevoJuego.verificar();
     
-//        this.servicio.guardarJuego(this.nuevoJuego);
+        this.servicio.guardarJuego(this.nuevoJuego);
         return;
       }
 
@@ -98,7 +98,7 @@ export class SimonComponent implements OnInit {
       }
       this.nuevoJuego.gano= this.nuevoJuego.verificar();
   
-//      this.servicio.guardarJuego(this.nuevoJuego);
+      this.servicio.guardarJuego(this.nuevoJuego);
           }
     else{
       this.isPlaying = false;
